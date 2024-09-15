@@ -4,17 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "GUI/Levels/MainMenu.h"
-#include "FPSGameMode.generated.h"
+#include "MainMenuGameMode.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class VGP221FPSPROJECT_API AFPSGameMode : public AGameModeBase
+class VGP221FPSPROJECT_API AMainMenuGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
-	virtual void StartPlay() override;
+	virtual void BeginPlay() override;
+	
 };
