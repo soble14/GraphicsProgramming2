@@ -21,7 +21,6 @@ void UFPSUserWidget::NativeConstruct()
 
 void UFPSUserWidget::SetHealthBar(float percentage)
 {
-	
 	if (!HealthBar) return;
 
 	HealthBar->SetPercent(percentage);

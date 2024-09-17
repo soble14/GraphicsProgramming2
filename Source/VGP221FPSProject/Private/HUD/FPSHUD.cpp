@@ -19,12 +19,12 @@ void AFPSHUD::DrawHUD()
 
 	//1. Calculate the cetner point on the screen
 	FVector2D Center(Canvas->ClipX * 0.5f, Canvas->ClipY * 0.5f);
-
+	
 	//2. Set the crosshair pivot to the center. This makes it center, without this it will be off center, it would be 0.5 units down and 0.5 units to the right.
 	float CrosshairCenterWidth = (CrosshairTexture->GetSurfaceWidth() * 0.5f);
 	float CrosshairCenterHeight = (CrosshairTexture->GetSurfaceHeight() * 0.5f);
 	FVector2D CrosshairDrawPos(Center.X - CrosshairCenterWidth, Center.Y - CrosshairCenterHeight);
-
+	
 	//3. Draw the crosshair
 	FCanvasTileItem TileItem(CrosshairDrawPos, CrosshairTexture->GetResource(), FLinearColor::White);
 	TileItem.BlendMode = SE_BLEND_Translucent;

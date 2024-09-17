@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/SphereComponent.h"
+#include "Player/FPSCharacter.h"
 #include "Collectable.generated.h"
 
 UCLASS()

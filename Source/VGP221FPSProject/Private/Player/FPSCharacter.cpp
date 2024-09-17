@@ -132,6 +132,11 @@ float AFPSCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEv
 		HUD->gameWidgetContainer->SetHealthBar(HealthPercent);
 	}
 
+	if (Health <= 0) 
+	{
+		UGameplayStatics::OpenLevel(GetWorld(), "DefeatLevel");
+	}
+
 	return finalDamage;
 }
 

@@ -9,11 +9,14 @@
 #include "GUI/FPSUserWidget.h"
 #include "FPSHUD.generated.h"
 
+/**
+ * 
+ */
 UCLASS()
 class VGP221FPSPROJECT_API AFPSHUD : public AHUD
 {
 	GENERATED_BODY()
-
+	
 public:
 	virtual void BeginPlay() override;
 	virtual void DrawHUD() override;

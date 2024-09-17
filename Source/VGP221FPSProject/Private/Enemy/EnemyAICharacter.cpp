@@ -2,6 +2,7 @@
 
 
 #include "Enemy/EnemyAICharacter.h"
+#include "Collectable/Coin.h"
 
 // Sets default values
 AEnemyAICharacter::AEnemyAICharacter()
@@ -9,6 +10,15 @@ AEnemyAICharacter::AEnemyAICharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	static ConstructorHelpers::FClassFinder<AActor>CoinBP(TEXT("/Game/Blueprint/Collectable/BP_Coin"));
+	if (CoinBP.Succeeded())
+	{
+		BP_Coin = CoinBP.Class;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("BP_Coin not found!"));
+	}
 }
 
 // Called when the game starts or when spawned
@@ -30,4 +40,21 @@ void AEnemyAICharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+float AEnemyAICharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	Health -= DamageAmount;
+
+	if (Health <= 0) 
+	{
+		FVector SpawnLocation = GetActorLocation();
+		FRotator SpawnRotation = FRotator::ZeroRotator;
+
+		GetWorld()->SpawnActor<AActor>(BP_Coin, SpawnLocation, SpawnRotation);
+
+		Destroy();
+		UE_LOG(LogTemp, Warning, TEXT("Enemy Died"));
+	}
+	return DamageAmount;
 }

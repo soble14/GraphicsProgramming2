@@ -96,10 +96,10 @@ void SSettingWidget::Construct(const FArguments& InArgs)
 }
 FReply SSettingWidget::OnResumeClicked() const
 {
-	/*if (OwningHUD.IsValid()) 
+	if (OwningHUD.IsValid()) 
 	{
 		OwningHUD->RemoveSettingMenu();
-	}*/
+	}
 	return FReply::Handled();
 }
 FReply SSettingWidget::OnSettingsClicked() const
