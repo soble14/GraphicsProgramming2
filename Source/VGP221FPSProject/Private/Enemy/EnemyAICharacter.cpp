@@ -2,6 +2,7 @@
 
 
 #include "Enemy/EnemyAICharacter.h"
+#include "Enemy/EnemyAIController.h"
 #include "Collectable/Coin.h"
 
 // Sets default values
@@ -9,6 +10,7 @@ AEnemyAICharacter::AEnemyAICharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	AIControllerClass = AEnemyAIController::StaticClass();
 
 	static ConstructorHelpers::FClassFinder<AActor>CoinBP(TEXT("/Game/Blueprint/Collectable/BP_Coin"));
 	if (CoinBP.Succeeded())

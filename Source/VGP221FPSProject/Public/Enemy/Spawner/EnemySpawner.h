@@ -4,8 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "AI/NavigationSystemBase.h"
 #include "NavigationSystem.h"
+#include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
+#include "GameFramework/Character.h"
+#include "TimerManager.h"
 #include "Enemy/EnemyAICharacter.h"
 #include "EnemySpawner.generated.h"
 
@@ -26,13 +30,22 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY()
-	FVector RandomLocation;
-	UPROPERTY()
-	UNavigationSystemV1* NavArea;
-	UPROPERTY()
-	FTimerHandle RetriggerableTimerHandle;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawner")
+	float SpawnInterval = 1.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawner")
+	int32 TotalMaxEnemies = 100;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawner")
+	TArray<TSubclassOf<ACharacter>> EnemyClasses;
 
-	UFUNCTION()
-	void RunTriggerableTimer();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawner")
+	TArray<int32> MaxEnemiesPerClass;
+
+private:
+	FTimerHandle SpawnTimer;
+
+	void SpawnEnemy();
+
+	FVector GetRandomLocation();
+
+	TArray<int32> SpawnedEnemiesPerClass;
 };
