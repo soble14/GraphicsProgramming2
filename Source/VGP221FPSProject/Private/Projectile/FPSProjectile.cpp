@@ -87,6 +87,16 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor
 	}
 
 	if (OtherActor) {
+		AEnemyAICharacter* enemy = Cast<AEnemyAICharacter>(OtherActor);
+
+		if(enemy)
+		{
+			float DamageAmount = 20.0f;
+			FDamageEvent enemyTakeDamage;
+			enemy->TakeDamage(DamageAmount, enemyTakeDamage, GetInstigatorController(), this);
+			
+			UE_LOG(LogTemp, Warning, TEXT("Enemy Hit Damaged for: %f"), DamageAmount);
+		}
 		Destroy();
 	}
 

@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Engine/DamageEvents.h"
 #include "GameFramework/DamageType.h" 
+#include "Kismet/GameplayStatics.h"
 #include "EnemyAICharacter.generated.h"
 
 UCLASS()
@@ -30,4 +31,9 @@ public:
 
 	float Health = 100;
 	const float maxHealth = 100;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+	TSubclassOf<AActor> BP_Coin;
+
+	virtual float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 };

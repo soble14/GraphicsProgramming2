@@ -12,7 +12,7 @@ ACoin::ACoin()
 		CoinMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CoinMesh"));
 		CoinMeshComponent->SetupAttachment(CollisionComponent);
 	}
-}
+	}
 
 // Called when the game starts or when spawned
 void ACoin::BeginPlay()
