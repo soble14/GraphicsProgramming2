@@ -8,11 +8,12 @@ ACoin::ACoin()
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	if (!CoinMeshComponent) {
+	if (!CoinMeshComponent) 
+	{
 		CoinMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CoinMesh"));
 		CoinMeshComponent->SetupAttachment(CollisionComponent);
 	}
-	}
+}
 
 // Called when the game starts or when spawned
 void ACoin::BeginPlay()

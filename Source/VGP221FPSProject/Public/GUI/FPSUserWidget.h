@@ -28,6 +28,9 @@ public:
 	UTextBlock* ScoreText;
 
 	UPROPERTY(meta = (BindWidget))
+	UTextBlock* KeysText;
+
+	UPROPERTY(meta = (BindWidget))
 	UVerticalBox* ButtonContainer;
 
 	UPROPERTY(EditAnywhere)
@@ -38,6 +41,14 @@ public:
 
 	UFUNCTION()
 	void SetScoreText(int amount);
+
+	UFUNCTION()
+	void SetKeyText(int amount);
+
+	UFUNCTION(BlueprintCallable, Category = "Keys")
+	int GetUIKeys() const;
+
+	int UIKeys = 0;
 
 private:
 	int UIScore = 0;

@@ -7,6 +7,7 @@ void UFPSUserWidget::NativeConstruct()
 {
 	SetHealthBar(1.0f);
 	SetScoreText(0);
+	SetKeyText(0);
 
 	if (ButtonWidgetPrefab) {
 		//for (int i = 0; i < 4; i++) {
@@ -32,4 +33,17 @@ void UFPSUserWidget::SetScoreText(int amount)
 
 	UIScore += amount;
 	ScoreText->SetText(FText::FromString("Score: " + FString::FromInt(UIScore)));
+}
+
+void UFPSUserWidget::SetKeyText(int amount)
+{
+	if (!KeysText) return;
+
+	UIKeys += amount;
+	KeysText->SetText(FText::FromString("Keys: " + FString::FromInt(UIKeys)));
+}
+
+int UFPSUserWidget::GetUIKeys() const
+{
+	return UIKeys;
 }

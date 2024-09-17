@@ -42,6 +42,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 	FVector MuzzleOffset;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	int TotalKeysCollected;
+
 	UFUNCTION()
 	void MoveForward(float value);
 
